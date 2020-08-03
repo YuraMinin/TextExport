@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MSOfficeExportApp.Service
 {
     public interface IWordExport
     {
         void Export(String dir, String text);
+
+        // Работа с шаблоном  Word и Bookmarks
+        void Replace(String dir, String text);
+
     }
 }

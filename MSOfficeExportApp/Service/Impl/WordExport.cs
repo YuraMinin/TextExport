@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace MSOfficeExportApp.Service.Impl
@@ -12,7 +8,6 @@ namespace MSOfficeExportApp.Service.Impl
         public void Export(String dir, String text)
         {
             // Создание приложения
-            // Получить объект приложения Word.
             Word.Application word = new Word.Application();
             word.Visible = true;
 
@@ -30,6 +25,27 @@ namespace MSOfficeExportApp.Service.Impl
             doc.Close();
             word.Quit();
 
+        }
+
+        public void Replace(string dir, string text)
+        {
+            object template = "F:\\CIT\\Others\\bookmarks.dotx";
+            Word.Application word = new Word.Application();
+            word.Visible = true;
+
+            Word.Document doc = word.Documents.Open(template);
+
+            String nameMark = "Name";
+            Word.Bookmarks bookmarks = doc.Bookmarks;
+           
+            foreach (Word.Bookmark mark  in bookmarks)
+            {
+                if (mark.Name == nameMark) mark.Range.Text = text;
+            }
+
+            doc.Save();
+            doc.Close();
+            word.Quit();
         }
     }
 }

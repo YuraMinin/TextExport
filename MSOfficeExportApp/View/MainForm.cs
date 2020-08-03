@@ -1,11 +1,5 @@
 ﻿using MSOfficeExportApp.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,8 +9,6 @@ namespace MSOfficeExportApp
     {
         public delegate void Export(String dir, String text);
 
-        private IWordExport _wordExport;
-        private IExcelExport _excelExport;
         private String _dir;
         private Export _exportText;        
 
@@ -24,7 +16,6 @@ namespace MSOfficeExportApp
         {
             InitializeComponent();
             
-            textBox.Text = "Укажите директорию";
             textBox.Enabled = false;
             exportBtn.Enabled = false;
         }
@@ -53,7 +44,6 @@ namespace MSOfficeExportApp
                 textBox.Enabled = true;
                 exportBtn.Enabled = true;
                 l_directory.Text = "Directory: " + _dir;
-                textBox.Text = "";
             }
         }
 
