@@ -79,6 +79,7 @@
             this.Controls.Add(this.l_directory);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.exportBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainForm";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);

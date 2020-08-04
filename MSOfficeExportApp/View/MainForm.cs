@@ -20,7 +20,7 @@ namespace MSOfficeExportApp
             exportBtn.Enabled = false;
         }
 
-        public void registerExportDelegate(Export exportText)
+        public void RegisterExportDelegate(Export exportText)
         {
             _exportText += exportText;
         }
@@ -46,7 +46,6 @@ namespace MSOfficeExportApp
                 l_directory.Text = "Directory: " + _dir;
             }
         }
-
 
         private void Form1_Load(object sender, EventArgs e)
         {

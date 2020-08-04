@@ -7,8 +7,7 @@ namespace MSOfficeExportApp.Service
     {
         void Export(String dir, String text);
 
-        // Работа с шаблоном  Word и Bookmarks
-        void Replace(String dir, String text);
-
+        // Работа с шаблоном Word и Bookmarks (закладками)
+        void ExportDotx(String dir, String text);
     }
 }

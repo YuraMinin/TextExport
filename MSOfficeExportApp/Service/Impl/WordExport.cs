@@ -8,42 +8,37 @@ namespace MSOfficeExportApp.Service.Impl
         public void Export(String dir, String text)
         {
             // Создание приложения
-            Word.Application word = new Word.Application();
-            word.Visible = true;
-
-
+            Word._Application word = new Word.Application() { Visible = true };
+       
             // Создание документа
-            Word.Document doc = word.Documents.Add();
+            Word._Document doc = word.Documents.Add();
 
             // Создание абзаца
-            Word.Paragraph paragraph;
-            paragraph = doc.Paragraphs.Add();
+            Word.Paragraph paragraph = doc.Paragraphs.Add();
             paragraph.Range.Text = text;
 
             // Сохранение документа
-            doc.SaveAs2(dir);
+            doc.SaveAs(dir + "\\exampleDocx.docx");
             doc.Close();
             word.Quit();
-
         }
 
-        public void Replace(string dir, string text)
+        public void ExportDotx(string dir, string text)
         {
-            object template = "F:\\CIT\\Others\\bookmarks.dotx";
-            Word.Application word = new Word.Application();
-            word.Visible = true;
+            object template = dir +  "\\exampleDotx.dotx";
+            Word._Application word = new Word.Application() { Visible = true };
+            Word._Document doc = word.Documents.Add(template);
 
-            Word.Document doc = word.Documents.Open(template);
-
+            // Поиск закладки Name и вставка введенного текста
             String nameMark = "Name";
             Word.Bookmarks bookmarks = doc.Bookmarks;
-           
+
             foreach (Word.Bookmark mark  in bookmarks)
             {
                 if (mark.Name == nameMark) mark.Range.Text = text;
             }
 
-            doc.Save();
+            doc.SaveAs(dir + "\\newTemplate.docx");
             doc.Close();
             word.Quit();
         }

@@ -27,8 +27,8 @@ namespace MSOfficeExportApp
             // Регистрация делегатов
             MainForm.Export exportText = wordExport.Export;
             exportText += excelExport.Export;
-            exportText += wordExport.Replace;
-            mainForm.registerExportDelegate(exportText);
+            exportText += wordExport.ExportDotx;
+            mainForm.RegisterExportDelegate(exportText);
 
             Application.Run(mainForm);
         }
